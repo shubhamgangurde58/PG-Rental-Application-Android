@@ -10,8 +10,6 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- Header -->
         <TextView
             android:text="Owner Registration"
             android:textSize="26sp"
@@ -28,8 +26,6 @@
             android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <!-- Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,8 +38,6 @@
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <!-- Owner Name -->
                 <EditText
                     android:id="@+id/edtOwnerName"
                     android:hint="Owner Name"
@@ -51,8 +45,6 @@
                     android:padding="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- PG Name -->
                 <EditText
                     android:id="@+id/edtPgName"
                     android:hint="PG Name"
@@ -61,8 +53,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Email -->
                 <EditText
                     android:id="@+id/edtEmail"
                     android:hint="Email Address"
@@ -72,8 +62,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Mobile -->
                 <EditText
                     android:id="@+id/edtMobile"
                     android:hint="Mobile Number"
@@ -83,8 +71,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Address -->
                 <EditText
                     android:id="@+id/edtAddress"
                     android:hint="PG Address"
@@ -93,8 +79,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- City -->
                 <EditText
                     android:id="@+id/edtCity"
                     android:hint="City"
@@ -104,8 +88,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-
-                <!-- Password -->
                 <EditText
                     android:id="@+id/edtPassword"
                     android:hint="Password"
@@ -115,8 +97,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Confirm Password -->
                 <EditText
                     android:id="@+id/edtConfirmPassword"
                     android:hint="Confirm Password"
@@ -126,8 +106,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Register Button -->
                 <Button
                     android:id="@+id/btnRegister"
                     android:text="Register as Owner"

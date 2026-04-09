@@ -21,7 +21,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ✅ Lock light mode
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_NO
         );
@@ -36,7 +35,6 @@ public class SplashActivity extends AppCompatActivity {
 
             if (sessionManager.isLoggedIn()) {
 
-                // ✅ User already logged in → go to dashboard
                 if (SessionManager.ROLE_OWNER.equals(sessionManager.getUserRole())) {
                     intent = new Intent(this, OwnerDashboardActivity.class);
                 } else {
@@ -44,11 +42,9 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
             } else {
-                // ❌ Not logged in → common home
                 intent = new Intent(this, HomeActivity.class);
             }
 
-            // ✅ Clear back stack
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

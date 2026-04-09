@@ -29,7 +29,6 @@ public class PgAdapter extends RecyclerView.Adapter<PgAdapter.PgViewHolder> {
     private final List<PgModel> pgList;
     private final OnPgClickListener listener;
 
-    // ✅ User location (optional – safe default)
     private double userLat = 0.0;
     private double userLng = 0.0;
 
@@ -39,7 +38,6 @@ public class PgAdapter extends RecyclerView.Adapter<PgAdapter.PgViewHolder> {
         this.listener = listener;
     }
 
-    // OPTIONAL: Call this if you have user location
     public void setUserLocation(double lat, double lng) {
         this.userLat = lat;
         this.userLng = lng;
@@ -63,18 +61,15 @@ public class PgAdapter extends RecyclerView.Adapter<PgAdapter.PgViewHolder> {
         holder.txtLocation.setText(pg.getLocation());
         holder.txtRent.setText("₹ " + pg.getRent() + " / month");
 
-        // ⭐ Rating
         float avgRating = RatingRepository.getAverageRating(context, pg.getName());
         holder.ratingBar.setRating(avgRating);
 
-        // 🖼 Image
         if (pg.getImageUri() != null && !pg.getImageUri().isEmpty()) {
             holder.imgPg.setImageURI(Uri.parse(pg.getImageUri()));
         } else {
             holder.imgPg.setImageResource(R.drawable.ic_launcher_background);
         }
 
-        // 📍 DISTANCE (🔥 FINAL FIX)
         if (pg.getLatitude() == 0.0 || pg.getLongitude() == 0.0
                 || userLat == 0.0 || userLng == 0.0) {
 

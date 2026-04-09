@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
     private FusedLocationProviderClient locationClient;
     private Location userLocation;
 
-    // Filter values
     private String selectedLocation = null;
     private String addressKeyword = null;
     private Integer minRent = null;
@@ -66,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         locationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Bind views
         edtSearch = findViewById(R.id.edtSearch);
         btnFilter = findViewById(R.id.btnFilter);
         recyclerPgList = findViewById(R.id.recyclerPgList);
@@ -88,7 +86,6 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerPgList.setAdapter(adapter);
 
-        // Search
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
             @Override public void afterTextChanged(Editable s) {}
@@ -98,7 +95,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // Filter
         btnFilter.setOnClickListener(v -> showFilterDialog());
 
         btnLogin.setOnClickListener(v ->
@@ -122,7 +118,6 @@ public class HomeActivity extends AppCompatActivity {
         refreshButtons();
     }
 
-    // ================= LOCATION =================
     private void fetchUserLocation() {
 
         if (ActivityCompat.checkSelfPermission(
@@ -143,7 +138,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    // ================= SEARCH + FILTER + DISTANCE =================
     private void applySearch() {
 
         List<PgModel> result = PgRepository.searchPgs(
@@ -171,7 +165,6 @@ public class HomeActivity extends AppCompatActivity {
                 pg.setDistanceKm(dist[0] / 1000f);
             }
 
-            // 🔥 Sort nearest first
             Collections.sort(result, Comparator.comparing(PgModel::getDistanceKm));
         }
 
@@ -181,7 +174,6 @@ public class HomeActivity extends AppCompatActivity {
         updateEmptyState();
     }
 
-    // ================= FILTER DIALOG =================
     private void showFilterDialog() {
 
         View view = getLayoutInflater().inflate(R.layout.dialog_filter_pg, null);
@@ -217,7 +209,6 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // ================= LOGIN / LOGOUT =================
     private void refreshButtons() {
         if (sessionManager.isLoggedIn()) {
             btnLogin.setVisibility(View.GONE);
@@ -228,7 +219,6 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    // ================= EMPTY STATE =================
     private void updateEmptyState() {
         if (currentList.isEmpty()) {
             recyclerPgList.setVisibility(View.GONE);

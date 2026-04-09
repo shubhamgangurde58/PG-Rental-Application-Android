@@ -76,7 +76,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
         startLiveLocation();
     }
 
-    // ================= LIVE LOCATION =================
     @SuppressLint("MissingPermission")
     private void startLiveLocation() {
 
@@ -102,12 +101,10 @@ public class NearestPgMapActivity extends AppCompatActivity {
         }
     };
 
-    // ================= MAP UPDATE =================
     private void updateMap(Location location) {
 
         mapView.getOverlays().clear();
 
-        // 👤 USER LOCATION
         userPoint = new GeoPoint(
                 location.getLatitude(),
                 location.getLongitude()
@@ -121,7 +118,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
 
         mapView.getController().setCenter(userPoint);
 
-        // 🏠 PG MARKERS
         List<PgModel> pgList = PgRepository.getPgList(this);
 
         for (PgModel pg : pgList) {
@@ -143,7 +139,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
             );
             pgMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
 
-            // 🔵 Blue PG marker
             var icon = getResources()
                     .getDrawable(org.osmdroid.library.R.drawable.marker_default)
                     .mutate();
@@ -153,7 +148,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
             );
             pgMarker.setIcon(icon);
 
-            // Auto focus from PG Detail
             if (fromPgDetail && pg.getPgId() == focusPgId) {
                 mapView.getController().setCenter(pgPoint);
                 mapView.getController().setZoom(17.0);
@@ -161,7 +155,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
                 drawRouteLine(pgPoint);
             }
 
-            // 👉 Tap logic
             pgMarker.setOnMarkerClickListener((marker, map) -> {
 
                 if (!marker.isInfoWindowShown()) {
@@ -181,7 +174,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
         mapView.invalidate();
     }
 
-    // ================= DISTANCE =================
     private float calculateDistanceKm(GeoPoint user, GeoPoint pg) {
         float[] result = new float[1];
         Location.distanceBetween(
@@ -194,7 +186,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
         return result[0] / 1000f;
     }
 
-    // ================= ROUTE LINE =================
     private void drawRouteLine(GeoPoint pgPoint) {
 
         if (routeLine != null) {
@@ -213,7 +204,6 @@ public class NearestPgMapActivity extends AppCompatActivity {
         mapView.getOverlays().add(routeLine);
     }
 
-    // ================= PERMISSION =================
     @Override
     public void onRequestPermissionsResult(
             int requestCode,

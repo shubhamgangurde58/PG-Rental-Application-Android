@@ -22,28 +22,23 @@ import java.util.List;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
 
-    // Header
     private TextView txtGreeting;
     private ImageButton btnMore;
 
-    // PG Card
+
     private CardView cardPg;
     private ImageView imgPg;
     private TextView tvPgName, tvAddress, tvRent, txtReviewCount;
     private RatingBar ratingBar;
     private Button btnViewReviews;
 
-    // Empty state
     private LinearLayout layoutNoPg;
 
-    // Bottom
     private Button btnManagePg;
     private BottomNavigationView bottomNavigation;
 
-    // Session
     private OwnerSessionManager ownerSessionManager;
 
-    // Owner PGs
     private List<PgModel> ownerPgs;
 
     @Override
@@ -53,7 +48,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
 
         ownerSessionManager = new OwnerSessionManager(this);
 
-        // Bind views
         txtGreeting = findViewById(R.id.txtGreeting);
         btnMore = findViewById(R.id.btnMore);
 
@@ -78,14 +72,12 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         setupBottomNavigation();
     }
 
-    // ================= LOAD OWNER PGs =================
     private void loadOwnerPgs() {
         String ownerEmail = ownerSessionManager.getEmail();
         ownerPgs = PgRepository.getPgsByOwner(this, ownerEmail);
 
     }
 
-    // ================= GREETING =================
     private void setupGreeting() {
         String ownerName = ownerSessionManager.getName();
 
@@ -98,7 +90,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         }
     }
 
-    // ================= PG CARD =================
     private void setupPgCard() {
 
         if (ownerPgs.isEmpty()) {
@@ -135,7 +126,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         });
     }
 
-    // ================= ADD / MANAGE PG =================
     private void setupManagePgButton() {
 
         if (ownerPgs.isEmpty()) {
@@ -151,7 +141,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         }
     }
 
-    // ================= MENU =================
     private void setupMenu() {
         btnMore.setOnClickListener(v -> {
             PopupMenu menu = new PopupMenu(this, btnMore);
@@ -174,7 +163,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         });
     }
 
-    // ================= BOTTOM NAV =================
     private void setupBottomNavigation() {
 
         bottomNavigation.setSelectedItemId(R.id.nav_manage_pg);

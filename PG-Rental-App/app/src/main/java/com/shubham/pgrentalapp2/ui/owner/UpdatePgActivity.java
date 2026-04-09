@@ -28,7 +28,6 @@ public class UpdatePgActivity extends AppCompatActivity {
 
     private OwnerSessionManager sessionManager;
 
-    // ================= IMAGE PICKER =================
     private final ActivityResultLauncher<Intent> imagePicker =
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
@@ -59,7 +58,6 @@ public class UpdatePgActivity extends AppCompatActivity {
 
         sessionManager = new OwnerSessionManager(this);
 
-        // ================= BIND VIEWS =================
         imgPg = findViewById(R.id.imgPg);
         btnChangeImage = findViewById(R.id.btnChangeImage);
         btnUpdate = findViewById(R.id.btnUpdatePg);
@@ -72,7 +70,6 @@ public class UpdatePgActivity extends AppCompatActivity {
         edtDesc = findViewById(R.id.edtDescription);
         spinnerType = findViewById(R.id.spinnerType);
 
-        // ================= SPINNER =================
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -83,7 +80,6 @@ public class UpdatePgActivity extends AppCompatActivity {
         );
         spinnerType.setAdapter(typeAdapter);
 
-        // ================= GET PG ID =================
         int pgId = getIntent().getIntExtra("pg_id", -1);
         if (pgId == -1) {
             Toast.makeText(this, "Invalid PG", Toast.LENGTH_SHORT).show();
@@ -91,7 +87,6 @@ public class UpdatePgActivity extends AppCompatActivity {
             return;
         }
 
-        // ================= LOAD PG =================
         pg = PgRepository.getPgById(this, pgId);
         if (pg == null) {
             Toast.makeText(this, "PG not found", Toast.LENGTH_SHORT).show();
@@ -99,14 +94,12 @@ public class UpdatePgActivity extends AppCompatActivity {
             return;
         }
 
-        // ================= OWNER SECURITY =================
         if (!pg.getOwnerEmail().equalsIgnoreCase(sessionManager.getEmail())) {
             Toast.makeText(this, "Unauthorized access", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        // ================= SET DATA =================
         edtName.setText(pg.getName());
         edtRent.setText(pg.getRent());
         edtLocation.setText(pg.getLocation());
@@ -122,7 +115,6 @@ public class UpdatePgActivity extends AppCompatActivity {
             imgPg.setImageURI(Uri.parse(imageUri));
         }
 
-        // ================= CHANGE IMAGE =================
         btnChangeImage.setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             i.setType("image/*");
@@ -131,7 +123,6 @@ public class UpdatePgActivity extends AppCompatActivity {
             imagePicker.launch(i);
         });
 
-        // ================= UPDATE =================
         btnUpdate.setOnClickListener(v -> updatePg());
     }
 

@@ -17,13 +17,11 @@ import com.shubham.pgrentalapp2.utils.OwnerSessionManager;
 
 public class OwnerProfileActivity extends AppCompatActivity {
 
-    // UI
     private EditText edtOwnerName, edtPgName, edtEmail,
             edtMobile, edtAddress, edtCity,
             edtOldPassword, edtNewPassword;
     private Button btnUpdateProfile;
 
-    // Helpers
     private OwnerSessionManager sessionManager;
     private DatabaseHelper dbHelper;
 
@@ -35,7 +33,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
         sessionManager = new OwnerSessionManager(this);
         dbHelper = new DatabaseHelper(this);
 
-        // Bind views
         edtOwnerName = findViewById(R.id.edtOwnerName);
         edtPgName = findViewById(R.id.edtPgName);
         edtEmail = findViewById(R.id.edtEmail);
@@ -46,7 +43,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
         edtNewPassword = findViewById(R.id.edtNewPassword);
         btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
 
-        // 🔒 PG NAME IS READ-ONLY
         edtPgName.setEnabled(false);
         edtPgName.setFocusable(false);
         edtPgName.setClickable(false);
@@ -56,7 +52,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
         btnUpdateProfile.setOnClickListener(v -> updateOwnerProfile());
     }
 
-    // ================= LOAD DATA =================
     private void loadOwnerData() {
         edtOwnerName.setText(sessionManager.getName());
         edtPgName.setText(sessionManager.getPgName()); // SHOW ONLY
@@ -67,7 +62,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
         edtCity.setText(sessionManager.getCity());
     }
 
-    // ================= UPDATE PROFILE =================
     private void updateOwnerProfile() {
 
         String name = edtOwnerName.getText().toString().trim();
@@ -84,7 +78,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        // 🔐 Fetch current password
         String currentPassword = "";
         Cursor c = db.rawQuery(
                 "SELECT password FROM owner WHERE email=?",
@@ -98,7 +91,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
 
         String finalPassword = currentPassword;
 
-        // 🔐 Password update
         if (!TextUtils.isEmpty(newPass)) {
             if (!oldPass.equals(currentPassword)) {
                 Toast.makeText(this, "Old password incorrect", Toast.LENGTH_SHORT).show();
@@ -126,7 +118,6 @@ public class OwnerProfileActivity extends AppCompatActivity {
 
         if (rows > 0) {
 
-            // ✅ UPDATE SESSION (NO PG NAME CHANGE)
             sessionManager.saveOwnerProfile(
                     name,
                     sessionManager.getPgName(),

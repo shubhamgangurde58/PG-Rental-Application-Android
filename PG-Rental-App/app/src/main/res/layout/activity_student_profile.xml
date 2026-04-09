@@ -9,8 +9,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- ================= TITLE ================= -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,16 +17,12 @@
             android:textStyle="bold"
             android:textColor="#212529"
             android:layout_marginBottom="16dp" />
-
-        <!-- ================= PROFILE CARD ================= -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_search"
             android:padding="16dp">
-
-            <!-- Full Name -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,8 +37,6 @@
                 android:padding="12dp"
                 android:inputType="textPersonName"
                 android:background="@drawable/bg_search" />
-
-            <!-- Email -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,8 +52,6 @@
                 android:padding="12dp"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/bg_search" />
-
-            <!-- Phone -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +67,6 @@
                 android:padding="12dp"
                 android:inputType="phone"
                 android:background="@drawable/bg_search" />
-
-            <!-- Address -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,8 +83,6 @@
                 android:padding="12dp"
                 android:gravity="top"
                 android:background="@drawable/bg_search" />
-
-            <!-- City -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,8 +97,6 @@
                 android:hint="Enter city"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- Gender -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,8 +111,6 @@
                 android:background="@drawable/bg_search" />
 
         </LinearLayout>
-
-        <!-- ================= PASSWORD CARD ================= -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,8 +127,6 @@
                 android:textSize="16sp"
                 android:textColor="#212529"
                 android:layout_marginBottom="8dp" />
-
-            <!-- Old Password -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,8 +141,6 @@
                 android:padding="12dp"
                 android:inputType="textPassword"
                 android:background="@drawable/bg_search" />
-
-            <!-- New Password -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,8 +157,6 @@
                 android:inputType="textPassword"
                 android:background="@drawable/bg_search" />
         </LinearLayout>
-
-        <!-- ================= UPDATE BUTTON ================= -->
         <Button
             android:id="@+id/btnUpdateProfile"
             android:layout_width="match_parent"

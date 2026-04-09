@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1976D2">
-
-    <!-- CENTER CONTAINER -->
     <LinearLayout
         android:id="@+id/centerContainer"
         android:orientation="vertical"
@@ -17,8 +15,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- APP LOGO -->
         <ImageView
             android:id="@+id/imgLogo"
             android:layout_width="120dp"
@@ -26,8 +22,6 @@
             android:src="@drawable/pg_logo"
             android:contentDescription="App Logo"
             android:layout_marginBottom="12dp"/>
-
-        <!-- APP NAME -->
         <TextView
             android:id="@+id/txtAppName"
             android:layout_width="wrap_content"
@@ -37,8 +31,6 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="4dp"/>
-
-        <!-- TAGLINE -->
         <TextView
             android:id="@+id/txtTagline"
             android:layout_width="wrap_content"
@@ -47,16 +39,12 @@
             android:textSize="14sp"
             android:textColor="#E3F2FD"
             android:layout_marginBottom="24dp"/>
-
-        <!-- LOADER -->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateTint="#FFFFFF"/>
-
-        <!-- LOADING TEXT -->
         <TextView
             android:id="@+id/txtLoading"
             android:layout_width="wrap_content"

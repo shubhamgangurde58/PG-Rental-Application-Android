@@ -28,7 +28,6 @@ public class StudentProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
 
-        // 🔹 Bind views
         edtName = findViewById(R.id.edtName);
         edtEmail = findViewById(R.id.edtEmail);
         edtPhone = findViewById(R.id.edtPhone);
@@ -42,14 +41,12 @@ public class StudentProfileActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         studentDao = new StudentDao(this);
 
-        // 🔹 Load data from session
         edtName.setText(sessionManager.getUserName());
         edtEmail.setText(sessionManager.getUserEmail());
         edtPhone.setText(sessionManager.getUserPhone());
         edtAddress.setText(sessionManager.getUserAddress());
         edtCity.setText(sessionManager.getUserCity());
 
-        // 🔹 Gender spinner setup
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.gender_options,
@@ -64,7 +61,6 @@ public class StudentProfileActivity extends AppCompatActivity {
             if (position >= 0) spinnerGender.setSelection(position);
         }
 
-        // 🔹 UPDATE PROFILE + PASSWORD
         btnUpdateProfile.setOnClickListener(v -> {
 
             int studentId = sessionManager.getUserId();
@@ -79,7 +75,6 @@ public class StudentProfileActivity extends AppCompatActivity {
             String oldPassword = edtOldPassword.getText().toString().trim();
             String newPassword = edtNewPassword.getText().toString().trim();
 
-            // 🔴 Basic validation
             if (name.isEmpty() || email.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(
                         this,
@@ -89,7 +84,6 @@ public class StudentProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            // 🔥 UPDATE PROFILE (SQLite)
             boolean profileUpdated = studentDao.updateStudentProfile(
                     studentId,
                     name,
@@ -102,7 +96,6 @@ public class StudentProfileActivity extends AppCompatActivity {
 
             if (profileUpdated) {
 
-                // 🔹 Update session
                 sessionManager.updateProfile(
                         name,
                         email,
@@ -118,7 +111,6 @@ public class StudentProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            // ================= PASSWORD CHANGE LOGIC =================
             if (!oldPassword.isEmpty() || !newPassword.isEmpty()) {
 
                 if (oldPassword.isEmpty() || newPassword.isEmpty()) {
@@ -153,7 +145,6 @@ public class StudentProfileActivity extends AppCompatActivity {
                 }
             }
 
-            // 🔹 Clear password fields
             edtOldPassword.setText("");
             edtNewPassword.setText("");
 

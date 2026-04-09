@@ -42,11 +42,9 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
         BookingModel booking = bookingList.get(position);
 
-        // ================= BASIC DATA =================
         holder.tvPgName.setText(booking.getPgName());
         holder.tvRent.setText("₹ " + booking.getRent() + " / Month");
 
-        // ✅ DYNAMIC ADDRESS + CITY
         String addressText = booking.getPgAddress();
         String cityText = booking.getPgCity();
 
@@ -59,7 +57,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             holder.tvAddress.setText("Address not available");
         }
 
-        // ================= STATUS =================
         holder.tvStatus.setText(booking.getStatus());
 
         switch (booking.getStatus().toLowerCase()) {
@@ -76,14 +73,13 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                 holder.btnCancel.setVisibility(View.GONE);
                 break;
 
-            default: // pending
+            default: 
                 holder.tvStatus.setBackgroundColor(Color.parseColor("#FFF3CD"));
                 holder.tvStatus.setTextColor(Color.parseColor("#856404"));
                 holder.btnCancel.setVisibility(View.VISIBLE);
                 break;
         }
 
-        // ================= CANCEL BOOKING =================
         holder.btnCancel.setOnClickListener(v -> {
 
             new AlertDialog.Builder(context)
@@ -121,7 +117,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         return bookingList.size();
     }
 
-    // ================= VIEW HOLDER =================
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvPgName, tvRent, tvAddress, tvStatus;
@@ -132,7 +127,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
             tvPgName = itemView.findViewById(R.id.tvPgName);
             tvRent = itemView.findViewById(R.id.tvRent);
-            tvAddress = itemView.findViewById(R.id.tvAddress); // ✅ IMPORTANT
+            tvAddress = itemView.findViewById(R.id.tvAddress); 
             tvStatus = itemView.findViewById(R.id.tvStatus);
             btnCancel = itemView.findViewById(R.id.btnCancelBooking);
         }

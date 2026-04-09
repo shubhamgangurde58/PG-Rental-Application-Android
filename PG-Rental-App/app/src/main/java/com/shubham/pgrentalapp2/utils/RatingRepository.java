@@ -9,11 +9,10 @@ public class RatingRepository {
     private static final String KEY_TOTAL = "_total";
     private static final String KEY_COUNT = "_count";
 
-    // 🔹 Add new rating
     public static void addRating(Context context, String pgName, float rating) {
 
         if (context == null || pgName == null || pgName.trim().isEmpty()) {
-            return; // safety: avoid crash
+            return; 
         }
 
         SharedPreferences prefs =
@@ -34,7 +33,6 @@ public class RatingRepository {
                 .apply();
     }
 
-    // 🔹 Get average rating
     public static float getAverageRating(Context context, String pgName) {
 
         if (context == null || pgName == null || pgName.trim().isEmpty()) {
@@ -52,7 +50,6 @@ public class RatingRepository {
         return total / count;
     }
 
-    // 🔹 Get rating count
     public static int getRatingCount(Context context, String pgName) {
 
         if (context == null || pgName == null || pgName.trim().isEmpty()) {

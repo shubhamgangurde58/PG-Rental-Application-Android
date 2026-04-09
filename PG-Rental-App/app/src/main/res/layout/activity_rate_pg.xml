@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F7FA">
-
-    <!-- CENTERED CARD -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +18,6 @@
             android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,8 +25,6 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="#212529"/>
-
-            <!-- Subtitle -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,8 +32,6 @@
                 android:textSize="14sp"
                 android:textColor="#6C757D"
                 android:layout_marginTop="4dp"/>
-
-            <!-- Rating Bar -->
             <RatingBar
                 android:id="@+id/ratingBar"
                 android:numStars="5"
@@ -50,8 +42,6 @@
                 android:progressTint="#FBC02D"
                 android:secondaryProgressTint="#FBC02D"
                 android:indeterminateTint="#FBC02D"/>
-
-            <!-- Review -->
             <EditText
                 android:id="@+id/edtReview"
                 android:hint="Write your review"
@@ -62,8 +52,6 @@
                 android:background="@android:drawable/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
-            <!-- Submit -->
             <Button
                 android:id="@+id/btnSubmitRating"
                 android:text="Submit Rating"

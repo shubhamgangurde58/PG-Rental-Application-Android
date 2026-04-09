@@ -6,23 +6,17 @@
     android:background="#F5F7FA"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- ================= HEADER ================= -->
     <LinearLayout
         android:orientation="vertical"
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- App name + menu -->
         <LinearLayout
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
-
-            <!-- APP NAME -->
             <TextView
                 android:id="@+id/txtTitle"
                 android:text="RoomBuddy"
@@ -32,8 +26,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
-
-            <!-- ☰ Menu -->
             <ImageButton
                 android:id="@+id/btnMore"
                 android:layout_width="40dp"
@@ -42,8 +34,6 @@
                 android:src="@android:drawable/ic_menu_more"
                 android:contentDescription="Menu"/>
         </LinearLayout>
-
-        <!-- Greeting -->
         <TextView
             android:id="@+id/txtGreeting"
             android:text="Welcome 👋 Manage Your Dashboard"
@@ -53,8 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
-    <!-- ================= SEARCH + FILTER ================= -->
     <androidx.cardview.widget.CardView
         android:layout_margin="16dp"
         android:layout_width="match_parent"
@@ -90,8 +78,6 @@
                 android:contentDescription="Filter"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- ================= EMPTY STATE ================= -->
     <include
         android:id="@+id/layoutEmpty"
         layout="@layout/layout_empty_state"
@@ -99,8 +85,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:visibility="gone"/>
-
-    <!-- ================= PG LIST ================= -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPgList"
         android:layout_width="match_parent"
@@ -108,8 +92,6 @@
         android:layout_weight="1"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"/>
-
-    <!-- ================= BOTTOM NAV ================= -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"

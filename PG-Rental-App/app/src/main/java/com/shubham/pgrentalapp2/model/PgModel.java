@@ -4,7 +4,6 @@ public class PgModel {
 
     private int pgId;
 
-    // ================= PG DETAILS =================
     private String name;
     private String location;
     private String rent;
@@ -12,26 +11,20 @@ public class PgModel {
     private String address;
     private String description;
 
-    // ================= OWNER DETAILS =================
     private String ownerName;
     private String ownerPhone;
     private String ownerEmail;
 
     private String imageUri;
 
-    // ================= LOCATION =================
     private double latitude;
     private double longitude;
 
-    // ================= RATING =================
     private float avgRating;
     private int ratingCount;
 
-    // ================= 🔥 DISTANCE (KM) =================
-    // -1 means distance not calculated yet
     private float distanceKm = -1f;
 
-    // ================= EMPTY CONSTRUCTOR =================
     public PgModel() {
         this.latitude = 0.0;
         this.longitude = 0.0;
@@ -39,7 +32,6 @@ public class PgModel {
         this.ratingCount = 0;
     }
 
-    // ================= CONSTRUCTOR (NO COORDS) =================
     public PgModel(
             String name,
             String location,
@@ -64,7 +56,6 @@ public class PgModel {
         this.imageUri = imageUri;
     }
 
-    // ================= FULL CONSTRUCTOR =================
     public PgModel(
             String name,
             String location,
@@ -87,7 +78,6 @@ public class PgModel {
         this.longitude = longitude;
     }
 
-    // ================= GETTERS =================
     public int getPgId() { return pgId; }
     public String getName() { return name; }
     public String getLocation() { return location; }
@@ -104,10 +94,8 @@ public class PgModel {
     public float getAvgRating() { return avgRating; }
     public int getRatingCount() { return ratingCount; }
 
-    // 🔥 DISTANCE
     public float getDistanceKm() { return distanceKm; }
 
-    // ================= SETTERS =================
     public void setPgId(int pgId) { this.pgId = pgId; }
     public void setName(String name) { this.name = name; }
     public void setLocation(String location) { this.location = location; }
@@ -124,12 +112,10 @@ public class PgModel {
     public void setAvgRating(float avgRating) { this.avgRating = avgRating; }
     public void setRatingCount(int ratingCount) { this.ratingCount = ratingCount; }
 
-    // 🔥 DISTANCE SETTER
     public void setDistanceKm(float distanceKm) {
         this.distanceKm = distanceKm;
     }
 
-    // ================= RENT AS INTEGER =================
     public int getRentAsInt() {
         try {
             return Integer.parseInt(rent.replaceAll("[^0-9]", ""));
@@ -138,7 +124,6 @@ public class PgModel {
         }
     }
 
-    // ================= DEBUG =================
     @Override
     public String toString() {
         return "PgModel{" +

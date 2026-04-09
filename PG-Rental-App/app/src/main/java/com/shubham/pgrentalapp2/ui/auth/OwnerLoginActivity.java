@@ -29,7 +29,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_login);
 
-        // Bind views
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -38,7 +37,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
         ownerDao = new OwnerDao(this);
         ownerSessionManager = new OwnerSessionManager(this);
 
-        // ================= LOGIN =================
         btnLogin.setOnClickListener(v -> {
 
             String email = edtEmail.getText().toString().trim();
@@ -57,7 +55,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
             if (cursor != null && cursor.moveToFirst()) {
 
-                // ✅ READ ALL REQUIRED DATA
                 int ownerId = cursor.getInt(
                         cursor.getColumnIndexOrThrow("owner_id"));
 
@@ -81,7 +78,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
                 cursor.close();
 
-                // ✅ CREATE LOGIN SESSION
                 ownerSessionManager.login(
                         ownerId,
                         name,
@@ -90,7 +86,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
                         passwordFromDb
                 );
 
-                // ✅ SAVE FULL PROFILE INTO SESSION
                 ownerSessionManager.saveOwnerProfile(
                         name,
                         pgName,
@@ -127,7 +122,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
             }
         });
 
-        // ================= REGISTER =================
         txtRegister.setOnClickListener(v ->
                 startActivity(
                         new Intent(

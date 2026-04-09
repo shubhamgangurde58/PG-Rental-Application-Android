@@ -14,8 +14,6 @@
         android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- Reviewer Name -->
         <TextView
             android:id="@+id/txtUser"
             android:layout_width="wrap_content"
@@ -23,8 +21,6 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="#212529"/>
-
-        <!-- Rating -->
         <RatingBar
             android:id="@+id/ratingBar"
             style="?android:attr/ratingBarStyleSmall"
@@ -32,8 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"/>
-
-        <!-- Review Comment -->
         <TextView
             android:id="@+id/txtComment"
             android:layout_width="match_parent"

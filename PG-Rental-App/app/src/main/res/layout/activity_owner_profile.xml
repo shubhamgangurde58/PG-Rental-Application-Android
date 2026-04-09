@@ -9,8 +9,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- ================= TITLE ================= -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,16 +17,12 @@
             android:textStyle="bold"
             android:textColor="#212529"
             android:layout_marginBottom="16dp" />
-
-        <!-- ================= PROFILE DETAILS ================= -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_search"
             android:padding="16dp">
-
-            <!-- Owner Name -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,8 +39,6 @@
                 android:hint="Enter owner name"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- PG Name -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,8 +56,6 @@
                 android:hint="Enter PG name"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- Email -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,8 +74,6 @@
                 android:inputType="textEmailAddress"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- Mobile -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,8 +92,6 @@
                 android:inputType="phone"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- Address -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,8 +111,6 @@
                 android:gravity="top"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- City -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,8 +130,6 @@
                 android:background="@drawable/bg_search" />
 
         </LinearLayout>
-
-        <!-- ================= PASSWORD SECTION ================= -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,8 +146,6 @@
                 android:textSize="16sp"
                 android:textColor="#212529"
                 android:layout_marginBottom="8dp" />
-
-            <!-- Old Password -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,8 +163,6 @@
                 android:inputType="textPassword"
                 android:padding="12dp"
                 android:background="@drawable/bg_search" />
-
-            <!-- New Password -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -205,8 +183,6 @@
                 android:background="@drawable/bg_search" />
 
         </LinearLayout>
-
-        <!-- ================= UPDATE BUTTON ================= -->
         <Button
             android:id="@+id/btnUpdateProfile"
             android:layout_width="match_parent"

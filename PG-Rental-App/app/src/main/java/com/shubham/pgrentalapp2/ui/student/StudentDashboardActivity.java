@@ -50,7 +50,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
     private FusedLocationProviderClient locationClient;
     private Location userLocation;
 
-    // 🔍 Filter values
     private String selectedLocation = null;
     private String addressKeyword = null;
     private Integer minRent = null;
@@ -63,7 +62,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
-        // Bind views
         edtSearch = findViewById(R.id.edtSearch);
         recyclerPgList = findViewById(R.id.recyclerPgList);
         btnFilter = findViewById(R.id.btnFilter);
@@ -82,7 +80,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
         recyclerPgList.setLayoutManager(new LinearLayoutManager(this));
 
-        // Adapter
         adapter = new PgAdapter(this, currentList, pg -> {
             if (pg.getPgId() <= 0) {
                 Toast.makeText(this, "PG detail not available", Toast.LENGTH_SHORT).show();
@@ -94,7 +91,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         });
         recyclerPgList.setAdapter(adapter);
 
-        // Search
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
             @Override public void afterTextChanged(Editable s) {}
@@ -104,10 +100,8 @@ public class StudentDashboardActivity extends AppCompatActivity {
             }
         });
 
-        // Filter dialog
         btnFilter.setOnClickListener(v -> showFilterDialog());
 
-        // Bottom navigation
         bottomNavigation.setSelectedItemId(R.id.nav_home);
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -127,7 +121,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
             return false;
         });
 
-        // More menu
         btnMore.setOnClickListener(v -> {
             PopupMenu menu = new PopupMenu(this, btnMore);
             menu.getMenuInflater().inflate(R.menu.dashboard_menu, menu.getMenu());
@@ -148,7 +141,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         fetchUserLocation();
     }
 
-    // ================= LOCATION =================
     private void fetchUserLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION
@@ -168,7 +160,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         });
     }
 
-    // ================= SEARCH + FILTER + DISTANCE =================
     private void applySearch() {
 
         List<PgModel> result = PgRepository.searchPgs(
@@ -180,7 +171,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
                 maxRent
         );
 
-        // 🔥 Calculate distance
         if (userLocation != null) {
             for (PgModel pg : result) {
                 if (pg.getLatitude() == 0 || pg.getLongitude() == 0) continue;
@@ -196,7 +186,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
                 pg.setDistanceKm(dist[0] / 1000f);
             }
 
-            // 🔥 Sort by nearest
             Collections.sort(result, Comparator.comparing(PgModel::getDistanceKm));
         }
 
@@ -206,7 +195,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         updateEmptyState();
     }
 
-    // ================= FILTER DIALOG =================
     private void showFilterDialog() {
 
         View view = getLayoutInflater().inflate(R.layout.dialog_filter_pg, null);
@@ -242,7 +230,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // ================= EMPTY STATE =================
     private void updateEmptyState() {
         if (currentList.isEmpty()) {
             recyclerPgList.setVisibility(View.GONE);

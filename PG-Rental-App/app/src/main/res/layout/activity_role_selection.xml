@@ -10,8 +10,6 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- Header -->
         <TextView
             android:text="Who are you?"
             android:textSize="26sp"
@@ -28,8 +26,6 @@
             android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <!-- Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,8 +38,6 @@
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <!-- User Button -->
                 <Button
                     android:id="@+id/btnUser"
                     android:text="I am a Student / User"
@@ -53,8 +47,6 @@
                     android:textColor="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Owner Button -->
                 <Button
                     android:id="@+id/btnOwner"
                     android:text="I am a PG Owner"

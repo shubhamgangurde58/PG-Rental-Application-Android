@@ -15,9 +15,6 @@ public class StudentDao {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // =================================================
-    // 🔹 CHECK EMAIL EXISTS (Helper)
-    // =================================================
     public boolean isEmailExists(String email) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -31,9 +28,6 @@ public class StudentDao {
         return exists;
     }
 
-    // =================================================
-    // 🔹 REGISTER STUDENT
-    // =================================================
     public boolean registerStudent(
             String name,
             String email,
@@ -43,7 +37,7 @@ public class StudentDao {
             String city,
             String gender
     ) {
-        // Avoid duplicate email
+
         if (isEmailExists(email)) {
             return false;
         }
@@ -63,9 +57,7 @@ public class StudentDao {
         return result != -1;
     }
 
-    // =================================================
-    // 🔹 LOGIN STUDENT
-    // =================================================
+ 
     public Cursor loginStudent(String email, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -75,9 +67,7 @@ public class StudentDao {
         );
     }
 
-    // =================================================
-    // 🔹 UPDATE STUDENT PROFILE (USED IN PROFILE SCREEN)
-    // =================================================
+    
     public boolean updateStudentProfile(
             int studentId,
             String name,
@@ -107,9 +97,7 @@ public class StudentDao {
         return rows > 0;
     }
 
-    // =================================================
-// 🔹 CHECK OLD PASSWORD
-// =================================================
+ 
     public boolean checkOldPassword(int studentId, String oldPassword) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -123,9 +111,7 @@ public class StudentDao {
         return match;
     }
 
-    // =================================================
-// 🔹 UPDATE PASSWORD
-// =================================================
+    
     public boolean updatePassword(int studentId, String newPassword) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 

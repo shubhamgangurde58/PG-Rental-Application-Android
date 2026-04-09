@@ -10,8 +10,6 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- Header -->
         <TextView
             android:text="Owner Login"
             android:textSize="26sp"
@@ -28,8 +26,6 @@
             android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <!-- Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,8 +38,6 @@
                 android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <!-- Email -->
                 <EditText
                     android:id="@+id/edtEmail"
                     android:hint="Owner Email"
@@ -52,8 +46,6 @@
                     android:padding="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Password -->
                 <EditText
                     android:id="@+id/edtPassword"
                     android:hint="Password"
@@ -63,8 +55,6 @@
                     android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Login Button -->
                 <Button
                     android:id="@+id/btnLogin"
                     android:text="Login as Owner"
@@ -77,8 +67,6 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!-- Register link -->
         <TextView
             android:id="@+id/txtRegister"
             android:text="New owner? Register here"

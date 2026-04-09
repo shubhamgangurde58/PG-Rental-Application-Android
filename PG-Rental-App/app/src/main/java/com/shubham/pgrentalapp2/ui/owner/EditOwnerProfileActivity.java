@@ -13,11 +13,9 @@ import com.shubham.pgrentalapp2.utils.OwnerSessionManager;
 
 public class EditOwnerProfileActivity extends AppCompatActivity {
 
-    // UI
     private EditText edtName, edtPgName, edtEmail, edtMobile, edtAddress, edtCity;
     private Button btnSaveProfile;
 
-    // Session
     private OwnerSessionManager ownerSessionManager;
 
     @Override
@@ -25,7 +23,6 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_owner_profile);
 
-        // Bind views
         edtName = findViewById(R.id.edtName);
         edtPgName = findViewById(R.id.edtPgName);
         edtEmail = findViewById(R.id.edtEmail);
@@ -36,7 +33,6 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
 
         ownerSessionManager = new OwnerSessionManager(this);
 
-        // 🔹 Prefill existing owner data
         edtName.setText(ownerSessionManager.getName());
         edtPgName.setText(ownerSessionManager.getPgName());
         edtEmail.setText(ownerSessionManager.getEmail());
@@ -44,7 +40,6 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
         edtAddress.setText(ownerSessionManager.getAddress());
         edtCity.setText(ownerSessionManager.getCity());
 
-        // 🔹 Save updated profile
         btnSaveProfile.setOnClickListener(v -> {
 
             String name = edtName.getText().toString().trim();
@@ -54,7 +49,6 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
             String address = edtAddress.getText().toString().trim();
             String city = edtCity.getText().toString().trim();
 
-            // ✅ Validation
             if (TextUtils.isEmpty(name)) {
                 edtName.setError("Name is required");
                 edtName.requestFocus();
@@ -67,7 +61,6 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            // ✅ Save to session
             ownerSessionManager.saveOwnerProfile(
                     name,
                     pgName,
@@ -83,7 +76,7 @@ public class EditOwnerProfileActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT
             ).show();
 
-            finish(); // return to OwnerProfileActivity
+            finish();
         });
     }
 }

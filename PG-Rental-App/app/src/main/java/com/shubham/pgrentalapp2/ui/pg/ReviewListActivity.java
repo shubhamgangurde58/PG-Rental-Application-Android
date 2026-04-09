@@ -18,6 +18,7 @@ public class ReviewListActivity extends AppCompatActivity {
 
     RecyclerView recyclerReviews;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,6 @@ public class ReviewListActivity extends AppCompatActivity {
         recyclerReviews = findViewById(R.id.recyclerReviews);
         recyclerReviews.setLayoutManager(new LinearLayoutManager(this));
 
-        // 🔹 Get PG name safely
         String pgName = getIntent().getStringExtra("pg_name");
 
         if (pgName == null) {
@@ -35,7 +35,6 @@ public class ReviewListActivity extends AppCompatActivity {
             return;
         }
 
-        // 🔹 Load reviews
         List<ReviewModel> reviews =
                 ReviewRepository.getReviews(this, pgName);
 

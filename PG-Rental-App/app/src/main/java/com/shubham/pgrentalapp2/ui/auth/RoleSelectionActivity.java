@@ -20,14 +20,12 @@ public class RoleSelectionActivity extends AppCompatActivity {
         btnUser = findViewById(R.id.btnUser);
         btnOwner = findViewById(R.id.btnOwner);
 
-        // ✅ STUDENT LOGIN
         btnUser.setOnClickListener(v -> {
             Intent intent = new Intent(this, UserLoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
 
-        // ✅ OWNER LOGIN
         btnOwner.setOnClickListener(v -> {
             Intent intent = new Intent(this, OwnerLoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

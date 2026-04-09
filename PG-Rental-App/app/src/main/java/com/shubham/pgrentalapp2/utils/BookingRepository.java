@@ -13,7 +13,6 @@ import java.util.List;
 
 public class BookingRepository {
 
-    // ================= ADD BOOKING =================
     public static void addBooking(Context context, BookingModel booking) {
 
         SQLiteDatabase db =
@@ -34,7 +33,6 @@ public class BookingRepository {
         db.close();
     }
 
-    // ================= DUPLICATE CHECK =================
     public static boolean hasBooking(
             Context context,
             String studentEmail,
@@ -55,7 +53,6 @@ public class BookingRepository {
         return exists;
     }
 
-    // ================= STUDENT BOOKINGS =================
     public static List<BookingModel> getBookingsByStudent(
             Context context,
             String studentEmail
@@ -79,7 +76,6 @@ public class BookingRepository {
         return list;
     }
 
-    // ================= OWNER BOOKINGS =================
     public static List<BookingModel> getBookingsForOwner(
             Context context,
             String ownerEmail
@@ -103,7 +99,6 @@ public class BookingRepository {
         return list;
     }
 
-    // ================= UPDATE STATUS =================
     public static void updateStatus(
             Context context,
             String studentEmail,
@@ -126,7 +121,6 @@ public class BookingRepository {
         db.close();
     }
 
-    // ================= DELETE BOOKING =================
     public static boolean deleteBooking(
             Context context,
             String studentEmail,
@@ -145,7 +139,6 @@ public class BookingRepository {
         return rows > 0;
     }
 
-    // ================= CURSOR → MODEL =================
     private static BookingModel cursorToModel(Cursor c) {
 
         return new BookingModel(

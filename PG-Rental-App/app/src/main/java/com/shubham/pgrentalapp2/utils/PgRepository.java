@@ -13,7 +13,6 @@ import java.util.List;
 
 public class PgRepository {
 
-    // ================= ADD PG =================
     public static void addPg(Context context, PgModel pg) {
 
         SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
@@ -36,7 +35,6 @@ public class PgRepository {
         db.close();
     }
 
-    // ================= UPDATE PG =================
     public static void updatePg(Context context, PgModel pg) {
 
         SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
@@ -57,7 +55,6 @@ public class PgRepository {
         db.close();
     }
 
-    // ================= DELETE PG =================
     public static void deletePg(Context context, int pgId) {
 
         SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
@@ -65,7 +62,6 @@ public class PgRepository {
         db.close();
     }
 
-    // ================= GET ALL PGs =================
     public static List<PgModel> getPgList(Context context) {
 
         List<PgModel> list = new ArrayList<>();
@@ -83,7 +79,6 @@ public class PgRepository {
         return list;
     }
 
-    // ================= 🔍 SEARCH + FILTER PGs (FINAL) =================
     public static List<PgModel> searchPgs(
             Context context,
             String pgNameKeyword,
@@ -99,25 +94,21 @@ public class PgRepository {
         StringBuilder query = new StringBuilder("SELECT * FROM pg WHERE 1=1");
         List<String> args = new ArrayList<>();
 
-        // 🔍 PG NAME
         if (pgNameKeyword != null && !pgNameKeyword.trim().isEmpty()) {
             query.append(" AND pg_name LIKE ?");
             args.add("%" + pgNameKeyword + "%");
         }
 
-        // 🏙️ CITY / LOCATION
         if (location != null && !location.trim().isEmpty()) {
             query.append(" AND location LIKE ?");
             args.add("%" + location + "%");
         }
 
-        // 🏠 ADDRESS
         if (addressKeyword != null && !addressKeyword.trim().isEmpty()) {
             query.append(" AND address LIKE ?");
             args.add("%" + addressKeyword + "%");
         }
 
-        // 💰 RENT RANGE
         if (minRent != null) {
             query.append(" AND CAST(REPLACE(REPLACE(rent,'₹',''),' ', '') AS INTEGER) >= ?");
             args.add(String.valueOf(minRent));
@@ -141,7 +132,6 @@ public class PgRepository {
         return list;
     }
 
-    // ================= GET PG BY ID =================
     public static PgModel getPgById(Context context, int pgId) {
 
         SQLiteDatabase db = new DatabaseHelper(context).getReadableDatabase();
@@ -158,7 +148,6 @@ public class PgRepository {
         return pg;
     }
 
-    // ================= GET PGs BY OWNER =================
     public static List<PgModel> getPgsByOwner(Context context, String ownerEmail) {
 
         List<PgModel> list = new ArrayList<>();
@@ -180,7 +169,6 @@ public class PgRepository {
         return list;
     }
 
-    // ================= CURSOR → MODEL =================
     private static PgModel buildPgFromCursor(Cursor c) {
 
         PgModel pg = new PgModel(

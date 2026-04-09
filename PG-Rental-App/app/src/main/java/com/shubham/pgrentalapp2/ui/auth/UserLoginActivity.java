@@ -29,7 +29,6 @@ public class UserLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        // 🔹 Bind views
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -42,7 +41,6 @@ public class UserLoginActivity extends AppCompatActivity {
                 .getWritableDatabase();
 
 
-        // ---------------- LOGIN ----------------
         btnLogin.setOnClickListener(v -> {
 
             String email = edtEmail.getText().toString().trim();
@@ -53,7 +51,6 @@ public class UserLoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // 🔹 SQLite Login
             Cursor cursor = studentDao.loginStudent(email, password);
 
             if (cursor != null && cursor.moveToFirst()) {
@@ -79,7 +76,6 @@ public class UserLoginActivity extends AppCompatActivity {
 
                 cursor.close();
 
-                // 🔹 Save Session
                 sessionManager.createLoginSession(
                         studentId,
                         name,
@@ -93,7 +89,6 @@ public class UserLoginActivity extends AppCompatActivity {
 
                 Toast.makeText(this, "Student Login Successful", Toast.LENGTH_SHORT).show();
 
-                // 🔹 Open Dashboard (clear back stack)
                 Intent intent = new Intent(
                         UserLoginActivity.this,
                         StudentDashboardActivity.class
@@ -110,7 +105,6 @@ public class UserLoginActivity extends AppCompatActivity {
             }
         });
 
-        // ---------------- REGISTER ----------------
         txtRegister.setOnClickListener(v -> {
             startActivity(new Intent(
                     UserLoginActivity.this,

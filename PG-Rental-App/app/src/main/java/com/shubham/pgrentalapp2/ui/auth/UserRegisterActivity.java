@@ -48,7 +48,6 @@ public class UserRegisterActivity extends AppCompatActivity {
             String password = edtPassword.getText().toString().trim();
             String confirmPassword = edtConfirmPassword.getText().toString().trim();
 
-            // 🔹 Gender from RadioGroup
             int selectedGenderId = rgGender.getCheckedRadioButtonId();
             String gender = "";
 
@@ -75,10 +74,8 @@ public class UserRegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            // 🔹 City not present in XML
             String city = "Not Provided";
 
-            // 🔥 INSERT FULL DATA INTO SQLITE
             boolean success = studentDao.registerStudent(
                     name,
                     email,

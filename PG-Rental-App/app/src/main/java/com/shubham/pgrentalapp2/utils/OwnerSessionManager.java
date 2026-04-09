@@ -5,10 +5,8 @@ import android.content.SharedPreferences;
 
 public class OwnerSessionManager {
 
-    // ================= PREF =================
     private static final String PREF_NAME = "OwnerSession";
 
-    // ================= KEYS =================
     private static final String KEY_IS_LOGGED_IN = "is_owner_logged_in";
     private static final String KEY_OWNER_ID = "owner_id";
     private static final String KEY_NAME = "owner_name";
@@ -27,9 +25,7 @@ public class OwnerSessionManager {
         editor = pref.edit();
     }
 
-    // =================================================
-    // 🔹 CREATE LOGIN SESSION (AFTER SQLITE LOGIN)
-    // =================================================
+   
     public void login(
             int ownerId,
             String name,
@@ -37,7 +33,7 @@ public class OwnerSessionManager {
             String mobile,
             String password
     ) {
-        // 🔥 CLEAR OLD DATA FIRST (IMPORTANT)
+        
         editor.clear();
 
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
@@ -55,9 +51,7 @@ public class OwnerSessionManager {
         editor.apply();
     }
 
-    // =================================================
-    // 🔹 SAVE / UPDATE OWNER PROFILE
-    // =================================================
+   
     public void saveOwnerProfile(
             String name,
             String pgName,
@@ -75,20 +69,18 @@ public class OwnerSessionManager {
         editor.apply();
     }
 
-    // =================================================
-    // 🔹 UPDATE PASSWORD ONLY
-    // =================================================
+   
     public void updatePassword(String newPassword) {
         editor.putString(KEY_PASSWORD, newPassword);
         editor.apply();
     }
 
-    // ================= LOGIN CHECK =================
+   
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    // ================= GETTERS =================
+   
     public int getOwnerId() {
         return pref.getInt(KEY_OWNER_ID, -1);
     }
@@ -121,7 +113,7 @@ public class OwnerSessionManager {
         return pref.getString(KEY_PASSWORD, "");
     }
 
-    // ================= LOGOUT =================
+   
     public void logout() {
         editor.clear();
         editor.apply();

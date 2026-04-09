@@ -25,7 +25,6 @@ import com.shubham.pgrentalapp2.utils.PgRepository;
 
 public class AddPgActivity extends AppCompatActivity {
 
-    // UI
     private EditText edtPgName, edtAddress, edtLocation,
             edtRent, edtDescription, edtContact;
     private Spinner spinnerType;
@@ -34,14 +33,11 @@ public class AddPgActivity extends AppCompatActivity {
 
     private Uri selectedImageUri;
 
-    // Location
     private FusedLocationProviderClient locationClient;
     private static final int LOCATION_REQ = 201;
 
-    // Session
     private OwnerSessionManager ownerSessionManager;
 
-    // Image picker
     private final ActivityResultLauncher<Intent> imagePicker =
             registerForActivityResult(
                     new ActivityResultContracts.StartActivityForResult(),
@@ -72,7 +68,6 @@ public class AddPgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pg);
 
-        // Bind views
         edtPgName = findViewById(R.id.edtPgName);
         edtAddress = findViewById(R.id.edtAddress);
         edtLocation = findViewById(R.id.edtLocation);
@@ -84,20 +79,17 @@ public class AddPgActivity extends AppCompatActivity {
         btnSelectImage = findViewById(R.id.btnSelectImage);
         imgPg = findViewById(R.id.imgPg);
 
-        // Init DB
         new DatabaseHelper(this).getWritableDatabase();
 
         ownerSessionManager = new OwnerSessionManager(this);
         locationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // 🔒 Owner login check
         if (!ownerSessionManager.isLoggedIn()) {
             Toast.makeText(this, "Please login as Owner", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        // Spinner
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -108,7 +100,6 @@ public class AddPgActivity extends AppCompatActivity {
         );
         spinnerType.setAdapter(typeAdapter);
 
-        // Image select
         btnSelectImage.setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             i.setType("image/*");
@@ -116,7 +107,6 @@ public class AddPgActivity extends AppCompatActivity {
             imagePicker.launch(i);
         });
 
-        // Add PG
         btnAddPg.setOnClickListener(v -> {
             if (validatePgForm()) {
                 addPgWithLocation();
@@ -124,7 +114,6 @@ public class AddPgActivity extends AppCompatActivity {
         });
     }
 
-    // ================= VALIDATION =================
     private boolean validatePgForm() {
 
         String enteredPgName = edtPgName.getText().toString().trim();
@@ -135,7 +124,6 @@ public class AddPgActivity extends AppCompatActivity {
             return false;
         }
 
-        // 🔥 PG NAME MUST MATCH OWNER PROFILE PG NAME
         if (!TextUtils.isEmpty(profilePgName)
                 && !profilePgName.equalsIgnoreCase(enteredPgName)) {
 
@@ -180,7 +168,6 @@ public class AddPgActivity extends AppCompatActivity {
         return true;
     }
 
-    // ================= ADD PG =================
     private void addPgWithLocation() {
 
         if (ActivityCompat.checkSelfPermission(

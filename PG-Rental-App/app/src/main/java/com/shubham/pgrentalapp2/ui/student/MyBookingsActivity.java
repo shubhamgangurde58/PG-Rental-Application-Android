@@ -38,7 +38,6 @@ public class MyBookingsActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        // 🔹 Init adapter once
         bookingAdapter = new BookingAdapter(this, bookingList);
         recyclerView.setAdapter(bookingAdapter);
     }

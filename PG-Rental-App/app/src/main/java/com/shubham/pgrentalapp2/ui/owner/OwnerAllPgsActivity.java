@@ -30,7 +30,6 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
 
     private PgAdapter adapter;
 
-    // 🔍 Filter values
     private String selectedLocation = null;
     private String addressKeyword = null;
     private Integer minRent = null;
@@ -43,7 +42,6 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_all_pgs);
 
-        // Bind views
         edtSearch = findViewById(R.id.edtSearch);
         btnFilter = findViewById(R.id.btnFilter);
         recyclerPgList = findViewById(R.id.recyclerPgList);
@@ -51,14 +49,11 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
 
         recyclerPgList.setLayoutManager(new LinearLayoutManager(this));
 
-        // Adapter (no click for owner)
         adapter = new PgAdapter(this, currentList, null);
         recyclerPgList.setAdapter(adapter);
 
-        // Initial load
         applySearch();
 
-        // 🔍 Search
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
             @Override public void afterTextChanged(Editable s) {}
@@ -69,7 +64,6 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
             }
         });
 
-        // 🎛️ Filter dialog
         btnFilter.setOnClickListener(v -> showFilterDialog());
     }
 
@@ -79,14 +73,13 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
         applySearch();
     }
 
-    // ================= APPLY SEARCH + FILTER =================
     private void applySearch() {
 
         List<PgModel> result = PgRepository.searchPgs(
                 this,
-                edtSearch.getText().toString(), // PG name
-                selectedLocation,               // City / Location
-                addressKeyword,                 // Address
+                edtSearch.getText().toString(), 
+                selectedLocation,               
+                addressKeyword,                 
                 minRent,
                 maxRent
         );
@@ -97,7 +90,6 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
         updateEmptyState();
     }
 
-    // ================= FILTER DIALOG =================
     private void showFilterDialog() {
 
         View view = getLayoutInflater().inflate(R.layout.dialog_filter_pg, null);
@@ -133,7 +125,6 @@ public class OwnerAllPgsActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // ================= EMPTY STATE =================
     private void updateEmptyState() {
         if (currentList.isEmpty()) {
             recyclerPgList.setVisibility(View.GONE);

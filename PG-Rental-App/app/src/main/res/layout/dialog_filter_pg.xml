@@ -12,8 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- City / Location -->
         <EditText
             android:id="@+id/edtCity"
             android:layout_width="match_parent"
@@ -26,8 +24,6 @@
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp"/>
-
-        <!-- Address -->
         <EditText
             android:id="@+id/edtAddress"
             android:layout_width="match_parent"
@@ -40,8 +36,6 @@
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp"/>
-
-        <!-- Min Rent -->
         <EditText
             android:id="@+id/edtMinRent"
             android:layout_width="match_parent"
@@ -54,8 +48,6 @@
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="12dp"/>
-
-        <!-- Max Rent -->
         <EditText
             android:id="@+id/edtMaxRent"
             android:layout_width="match_parent"
@@ -68,8 +60,6 @@
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:layout_marginBottom="16dp"/>
-
-        <!-- Apply Button -->
         <Button
             android:id="@+id/btnApplyFilter"
             android:layout_width="match_parent"

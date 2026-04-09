@@ -20,7 +20,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.Holder> {
     private List<ReviewModel> list;
 
     public ReviewAdapter(List<ReviewModel> list) {
-        // 🔹 Null safety
         this.list = (list != null) ? list : new ArrayList<>();
     }
 
@@ -36,7 +35,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.Holder> {
     public void onBindViewHolder(@NonNull Holder h, int position) {
         ReviewModel r = list.get(position);
 
-        // 🔹 Safe binding
         h.user.setText(
                 r.getUserName() != null ? r.getUserName() : "Anonymous"
         );
@@ -53,7 +51,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.Holder> {
         return list.size();
     }
 
-    // 🔹 Optional: future refresh support
     public void updateList(List<ReviewModel> newList) {
         this.list = (newList != null) ? newList : new ArrayList<>();
         notifyDataSetChanged();

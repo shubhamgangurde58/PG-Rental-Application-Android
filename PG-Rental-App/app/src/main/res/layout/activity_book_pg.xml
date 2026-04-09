@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F7FA">
-
-    <!-- ================= CENTER CARD ================= -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardBooking"
         android:layout_width="0dp"
@@ -24,8 +22,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp">
-
-            <!-- TITLE -->
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
@@ -36,8 +32,6 @@
                 android:textColor="#212529"
                 android:gravity="center"
                 android:layout_marginBottom="16dp"/>
-
-            <!-- PG NAME -->
             <TextView
                 android:id="@+id/tvPgName"
                 android:layout_width="match_parent"
@@ -46,8 +40,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#212529"/>
-
-            <!-- RENT -->
             <TextView
                 android:id="@+id/tvRent"
                 android:layout_width="match_parent"
@@ -56,8 +48,6 @@
                 android:textSize="14sp"
                 android:textColor="#1976D2"
                 android:layout_marginTop="8dp"/>
-
-            <!-- STATUS -->
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
@@ -67,8 +57,6 @@
                 android:textStyle="bold"
                 android:textColor="#FF9800"
                 android:layout_marginTop="12dp"/>
-
-            <!-- CONFIRM BUTTON -->
             <Button
                 android:id="@+id/btnConfirmBooking"
                 android:layout_width="match_parent"

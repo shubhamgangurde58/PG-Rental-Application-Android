@@ -12,15 +12,11 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <!-- ================= CENTER CONTAINER ================= -->
         <LinearLayout
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <!-- ================= HEADER ================= -->
             <TextView
                 android:text="Manage PG"
                 android:textSize="26sp"
@@ -39,8 +35,6 @@
                 android:layout_marginBottom="24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-            <!-- ================= MANAGE PG CARD ================= -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,8 +48,6 @@
                     android:padding="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <!-- Add PG -->
                     <Button
                         android:id="@+id/btnAddPg"
                         android:text="Add PG"
@@ -65,8 +57,6 @@
                         android:textColor="#FFFFFF"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"/>
-
-                    <!-- Update PG -->
                     <Button
                         android:id="@+id/btnUpdatePg"
                         android:text="Update PG Details"
@@ -77,8 +67,6 @@
                         android:textColor="#FFFFFF"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"/>
-
-                    <!-- Delete PG -->
                     <Button
                         android:id="@+id/btnDeletePg"
                         android:text="Delete PG"

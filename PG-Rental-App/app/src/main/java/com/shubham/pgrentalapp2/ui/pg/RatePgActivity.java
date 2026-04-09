@@ -27,12 +27,10 @@ public class RatePgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_pg);
 
-        // 🔹 Bind views
         ratingBar = findViewById(R.id.ratingBar);
         edtReview = findViewById(R.id.edtReview);
         btnSubmit = findViewById(R.id.btnSubmitRating);
 
-        // 🔹 Get PG name safely
         pgName = getIntent().getStringExtra("pg_name");
 
         if (pgName == null || pgName.isEmpty()) {
@@ -46,7 +44,6 @@ public class RatePgActivity extends AppCompatActivity {
             float rating = ratingBar.getRating();
             String comment = edtReview.getText().toString().trim();
 
-            // 🔹 Validation
             if (rating == 0f) {
                 Toast.makeText(this, "Please select a rating", Toast.LENGTH_SHORT).show();
                 return;
@@ -57,23 +54,20 @@ public class RatePgActivity extends AppCompatActivity {
                 return;
             }
 
-            // 🔹 Get logged-in user name
             SessionManager sessionManager = new SessionManager(this);
             String userName = sessionManager.getUserName();
 
-            // 🔹 Save review
             ReviewRepository.addReview(
                     this,
                     pgName,
                     new ReviewModel(userName, rating, comment)
             );
 
-            // 🔹 Update rating statistics
             RatingRepository.addRating(this, pgName, rating);
 
             Toast.makeText(this, "Thank you for your review!", Toast.LENGTH_SHORT).show();
 
-            finish(); // return to PG Detail page
+            finish(); 
         });
     }
 }

@@ -20,7 +20,6 @@ public class BookPgActivity extends AppCompatActivity {
 
     private SessionManager sessionManager;
 
-    // ================= PG DATA =================
     private String pgName, rent, ownerEmail, pgAddress, pgCity;
 
     @Override
@@ -28,7 +27,6 @@ public class BookPgActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_pg);
 
-        // ================= BIND VIEWS =================
         tvPgName = findViewById(R.id.tvPgName);
         tvRent = findViewById(R.id.tvRent);
         tvStatus = findViewById(R.id.tvStatus);
@@ -36,7 +34,6 @@ public class BookPgActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        // ================= GET INTENT DATA =================
         Intent intent = getIntent();
 
         pgName = intent.getStringExtra("pg_name");
@@ -45,7 +42,6 @@ public class BookPgActivity extends AppCompatActivity {
         pgAddress = intent.getStringExtra("pg_address"); // ✅ dynamic
         pgCity = intent.getStringExtra("pg_city");       // ✅ dynamic
 
-        // ================= VALIDATION =================
         if (pgName == null || ownerEmail == null) {
             Toast.makeText(this, "Invalid PG data", Toast.LENGTH_SHORT).show();
             finish();
@@ -55,17 +51,14 @@ public class BookPgActivity extends AppCompatActivity {
         if (pgAddress == null) pgAddress = "";
         if (pgCity == null) pgCity = "";
 
-        // ================= SET UI =================
         tvPgName.setText(pgName);
         tvRent.setText("₹ " + rent + " / Month");
         tvStatus.setText("Status: PENDING");
 
-        // ================= CONFIRM BOOKING =================
         btnConfirmBooking.setOnClickListener(v -> {
 
             String studentEmail = sessionManager.getUserEmail();
 
-            // 🔁 DUPLICATE CHECK
             if (BookingRepository.hasBooking(this, studentEmail, pgName)) {
                 Toast.makeText(
                         this,
@@ -75,7 +68,6 @@ public class BookPgActivity extends AppCompatActivity {
                 return;
             }
 
-            // ✅ CREATE FULL BOOKING MODEL
             BookingModel booking = new BookingModel(
                     pgName,
                     rent,

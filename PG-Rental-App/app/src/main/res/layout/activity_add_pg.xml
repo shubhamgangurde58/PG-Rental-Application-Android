@@ -10,8 +10,6 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <!-- Header -->
         <TextView
             android:text="Add New PG"
             android:textSize="26sp"
@@ -27,8 +25,6 @@
             android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
-        <!-- Card -->
         <androidx.cardview.widget.CardView
             card_view:cardCornerRadius="14dp"
             card_view:cardElevation="6dp"
@@ -73,8 +69,6 @@
                     android:padding="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- ✅ FIXED PG TYPE SPINNER -->
                 <Spinner
                     android:id="@+id/spinnerType"
                     android:layout_marginTop="12dp"
@@ -102,8 +96,6 @@
                     android:padding="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- PG Image Preview -->
                 <ImageView
                     android:id="@+id/imgPg"
                     android:layout_width="match_parent"
@@ -111,8 +103,6 @@
                     android:layout_marginTop="12dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/pg_sample"/>
-
-                <!-- Select Image Button -->
                 <Button
                     android:id="@+id/btnSelectImage"
                     android:text="Select PG Image"
@@ -122,8 +112,6 @@
                     android:textColor="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Add PG Button -->
                 <Button
                     android:id="@+id/btnAddPg"
                     android:text="Add PG"

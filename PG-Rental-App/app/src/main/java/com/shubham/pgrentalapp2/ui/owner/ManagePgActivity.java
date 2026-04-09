@@ -34,7 +34,6 @@ public class ManagePgActivity extends AppCompatActivity {
 
         loadOwnerPgs();
 
-        // ================= ADD PG =================
         btnAddPg.setOnClickListener(v -> {
             if (!ownerPgs.isEmpty()) {
                 Toast.makeText(
@@ -47,7 +46,6 @@ public class ManagePgActivity extends AppCompatActivity {
             startActivity(new Intent(this, AddPgActivity.class));
         });
 
-        // ================= UPDATE PG =================
         btnUpdatePg.setOnClickListener(v -> {
             if (ownerPgs.isEmpty()) {
                 Toast.makeText(
@@ -65,7 +63,6 @@ public class ManagePgActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // ================= DELETE PG =================
         btnDeletePg.setOnClickListener(v -> {
             if (ownerPgs.isEmpty()) {
                 Toast.makeText(
@@ -83,7 +80,6 @@ public class ManagePgActivity extends AppCompatActivity {
                     .setMessage("Are you sure you want to delete this PG?")
                     .setPositiveButton("Yes", (d, w) -> {
 
-                        // 🔥 DELETE FROM DB
                         PgRepository.deletePg(this, pg.getPgId());
 
                         Toast.makeText(
@@ -92,10 +88,8 @@ public class ManagePgActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT
                         ).show();
 
-                        // 🔥 REFRESH LOCAL LIST
                         ownerPgs.clear();
 
-                        // 🔥 RETURN TO DASHBOARD CLEANLY
                         finish();
                     })
                     .setNegativeButton("Cancel", null)
@@ -103,7 +97,6 @@ public class ManagePgActivity extends AppCompatActivity {
         });
     }
 
-    // ================= LOAD OWNER PGs =================
     private void loadOwnerPgs() {
         ownerPgs = PgRepository.getPgsByOwner(
                 this,

@@ -2,24 +2,18 @@ package com.shubham.pgrentalapp2.model;
 
 public class BookingModel {
 
-    // ================= PG DETAILS =================
     private String pgName;
     private String rent;
-    private String pgAddress;   // ✅ NEW
-    private String pgCity;      // ✅ NEW
+    private String pgAddress;   
+    private String pgCity;      
 
-    // ================= STUDENT DETAILS =================
     private String studentName;
     private String studentEmail;
     private String studentPhone;
 
-    // ================= OWNER + STATUS =================
     private String ownerEmail;
     private String status;
 
-    // ==================================================
-    // ✅ FULL CONSTRUCTOR (USE THIS GOING FORWARD)
-    // ==================================================
     public BookingModel(
             String pgName,
             String rent,
@@ -42,9 +36,7 @@ public class BookingModel {
         this.status = status;
     }
 
-    // ==================================================
-    // ⚠️ OLD CONSTRUCTOR (KEEP – FOR OLD BOOKINGS)
-    // ==================================================
+    
     public BookingModel(
             String pgName,
             String rent,
@@ -62,12 +54,10 @@ public class BookingModel {
         this.ownerEmail = ownerEmail;
         this.status = status;
 
-        // ✅ IMPORTANT DEFAULTS (PREVENT NULL UI)
         this.pgAddress = "Address not available";
         this.pgCity = "";
     }
 
-    // ================= GETTERS =================
     public String getPgName() {
         return pgName;
     }
@@ -104,7 +94,6 @@ public class BookingModel {
         return status;
     }
 
-    // ================= SETTERS =================
     public void setStatus(String status) {
         this.status = status;
     }

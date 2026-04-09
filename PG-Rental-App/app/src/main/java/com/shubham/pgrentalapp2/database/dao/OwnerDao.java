@@ -11,12 +11,10 @@ public class OwnerDao {
 
     private DatabaseHelper dbHelper;
 
-    // ✅ CONSTRUCTOR
     public OwnerDao(Context context) {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // ================= CHECK EMAIL =================
     public boolean isEmailExists(String email) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -33,7 +31,7 @@ public class OwnerDao {
         return exists;
     }
 
-    // ================= REGISTER OWNER =================
+
     public boolean registerOwner(
             String name,
             String pgName,
@@ -64,7 +62,6 @@ public class OwnerDao {
         return result != -1;
     }
 
-    // ================= LOGIN OWNER =================
     public Cursor loginOwner(String email, String password) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -75,7 +72,6 @@ public class OwnerDao {
         );
     }
 
-    // ================= GET OWNER ID =================
     public int getOwnerIdByEmail(String email) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -98,7 +94,6 @@ public class OwnerDao {
         return ownerId;
     }
 
-    // ================= 🔥 GET OWNER PHONE (NEW) =================
     public String getOwnerPhoneByEmail(String email) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();

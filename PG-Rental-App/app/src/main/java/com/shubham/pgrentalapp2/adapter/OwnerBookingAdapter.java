@@ -42,13 +42,11 @@ public class OwnerBookingAdapter
 
         BookingModel booking = bookingList.get(position);
 
-        // ---------------- DATA ----------------
         holder.tvStudentName.setText(booking.getStudentName());
         holder.tvStudentEmail.setText(booking.getStudentEmail());
         holder.tvStudentPhone.setText(booking.getStudentPhone());
         holder.tvStatus.setText(booking.getStatus());
 
-        // ---------------- STATUS UI ----------------
         switch (booking.getStatus().toLowerCase()) {
 
             case "accepted":
@@ -65,7 +63,7 @@ public class OwnerBookingAdapter
                 holder.btnReject.setEnabled(false);
                 break;
 
-            default: // Pending
+            default: 
                 holder.tvStatus.setBackgroundColor(Color.parseColor("#FFF3CD"));
                 holder.tvStatus.setTextColor(Color.parseColor("#856404"));
                 holder.btnAccept.setEnabled(true);
@@ -73,7 +71,6 @@ public class OwnerBookingAdapter
                 break;
         }
 
-        // ---------------- ACCEPT ----------------
         holder.btnAccept.setOnClickListener(v -> {
 
             BookingRepository.updateStatus(
@@ -91,7 +88,6 @@ public class OwnerBookingAdapter
                     Toast.LENGTH_SHORT).show();
         });
 
-        // ---------------- REJECT ----------------
         holder.btnReject.setOnClickListener(v -> {
 
             BookingRepository.updateStatus(
@@ -115,7 +111,6 @@ public class OwnerBookingAdapter
         return bookingList.size();
     }
 
-    // ---------------- VIEW HOLDER ----------------
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvStudentName, tvStudentEmail, tvStudentPhone, tvStatus;

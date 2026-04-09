@@ -5,25 +5,20 @@ import android.content.SharedPreferences;
 
 public class SessionManager {
 
-    // ================= PREF =================
     private static final String PREF_NAME = "pg_session";
 
-    // ================= KEYS =================
     private static final String KEY_LOGIN = "is_logged_in";
     private static final String KEY_ROLE = "user_role";
 
-    // User basic details
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_NAME = "user_name";
     private static final String KEY_EMAIL = "user_email";
     private static final String KEY_PHONE = "user_phone";
 
-    // Student profile details
     private static final String KEY_ADDRESS = "user_address";
     private static final String KEY_CITY = "user_city";
     private static final String KEY_GENDER = "user_gender";
 
-    // Roles
     public static final String ROLE_STUDENT = "STUDENT";
     public static final String ROLE_OWNER = "OWNER";
 
@@ -35,9 +30,6 @@ public class SessionManager {
         editor = prefs.edit();
     }
 
-    // =================================================
-    // OLD LOGIN (keep for backward compatibility)
-    // =================================================
     public void login(String role, String name, String email, String phone) {
         editor.putBoolean(KEY_LOGIN, true);
         editor.putString(KEY_ROLE, role);
@@ -47,9 +39,7 @@ public class SessionManager {
         editor.apply();
     }
 
-    // =================================================
-    // ✅ NEW SQLITE LOGIN (USED IN UserLoginActivity)
-    // =================================================
+
     public void createLoginSession(
             int userId,
             String name,
@@ -74,7 +64,6 @@ public class SessionManager {
         editor.apply();
     }
 
-    // ================= LOGIN CHECK =================
     public boolean isLoggedIn() {
         return prefs.getBoolean(KEY_LOGIN, false);
     }
@@ -87,7 +76,6 @@ public class SessionManager {
         return prefs.getInt(KEY_USER_ID, -1);
     }
 
-    // ================= BASIC GETTERS =================
     public String getUserName() {
         return prefs.getString(KEY_NAME, "User");
     }
@@ -100,7 +88,6 @@ public class SessionManager {
         return prefs.getString(KEY_PHONE, "");
     }
 
-    // ================= STUDENT PROFILE GETTERS =================
     public String getUserAddress() {
         return prefs.getString(KEY_ADDRESS, "");
     }
@@ -113,7 +100,6 @@ public class SessionManager {
         return prefs.getString(KEY_GENDER, "");
     }
 
-    // ================= UPDATE STUDENT PROFILE =================
     public void updateProfile(
             String name,
             String email,
@@ -131,7 +117,6 @@ public class SessionManager {
         editor.apply();
     }
 
-    // ================= BOOKING STATUS =================
     public void setBookingStatus(int pgId, String status) {
         editor.putString("booking_pg_" + pgId, status);
         editor.apply();
@@ -141,7 +126,6 @@ public class SessionManager {
         return prefs.getString("booking_pg_" + pgId, "Pending");
     }
 
-    // ================= LOGOUT =================
     public void logout() {
         editor.clear();
         editor.apply();

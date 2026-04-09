@@ -12,8 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- Student Name -->
         <TextView
             android:id="@+id/tvStudentName"
             android:text="Student Name"
@@ -22,8 +20,6 @@
             android:textColor="#212529"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <!-- Student Email -->
         <TextView
             android:id="@+id/tvStudentEmail"
             android:text="student@gmail.com"
@@ -32,8 +28,6 @@
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <!-- Student Phone -->
         <TextView
             android:id="@+id/tvStudentPhone"
             android:text="9876543210"
@@ -42,8 +36,6 @@
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <!-- Status -->
         <TextView
             android:id="@+id/tvStatus"
             android:text="Pending"
@@ -54,8 +46,6 @@
             android:textColor="#856404"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

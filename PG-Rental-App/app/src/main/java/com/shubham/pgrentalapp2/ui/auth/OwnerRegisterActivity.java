@@ -16,12 +16,10 @@ import com.shubham.pgrentalapp2.utils.OwnerSessionManager;
 
 public class OwnerRegisterActivity extends AppCompatActivity {
 
-    // UI
     private EditText edtOwnerName, edtPgName, edtEmail, edtMobile,
             edtAddress, edtCity, edtPassword, edtConfirmPassword;
     private Button btnRegister;
 
-    // DAO + Session
     private OwnerDao ownerDao;
     private OwnerSessionManager ownerSessionManager;
 
@@ -30,7 +28,6 @@ public class OwnerRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_register);
 
-        // Bind views
         edtOwnerName = findViewById(R.id.edtOwnerName);
         edtPgName = findViewById(R.id.edtPgName);
         edtEmail = findViewById(R.id.edtEmail);
@@ -58,7 +55,6 @@ public class OwnerRegisterActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
 
-        // 🔴 Validation
         if (TextUtils.isEmpty(ownerName)
                 || TextUtils.isEmpty(email)
                 || TextUtils.isEmpty(password)
@@ -73,7 +69,6 @@ public class OwnerRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // 🔥 INSERT INTO SQLITE
         boolean success = ownerDao.registerOwner(
                 ownerName,
                 pgName,
@@ -93,10 +88,8 @@ public class OwnerRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // ✅ GET OWNER ID
         int ownerId = ownerDao.getOwnerIdByEmail(email);
 
-        // ✅ CREATE LOGIN SESSION (BASIC)
         ownerSessionManager.login(
                 ownerId,
                 ownerName,
@@ -105,7 +98,6 @@ public class OwnerRegisterActivity extends AppCompatActivity {
                 password
         );
 
-        // ✅ SAVE FULL PROFILE INTO SESSION (🔥 MOST IMPORTANT FIX)
         ownerSessionManager.saveOwnerProfile(
                 ownerName,
                 pgName,
@@ -117,7 +109,6 @@ public class OwnerRegisterActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Owner registered successfully", Toast.LENGTH_SHORT).show();
 
-        // ✅ GO TO DASHBOARD
         Intent intent = new Intent(this, OwnerDashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

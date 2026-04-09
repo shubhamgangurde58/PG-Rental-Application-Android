@@ -26,7 +26,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(v -> {
             Toast.makeText(this, "Profile Updated Successfully", Toast.LENGTH_SHORT).show();
-            finish(); // return to profile screen
+            finish(); 
         });
     }
 }

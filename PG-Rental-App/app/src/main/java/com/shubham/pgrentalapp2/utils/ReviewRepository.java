@@ -15,7 +15,6 @@ public class ReviewRepository {
 
     private static final String PREF_NAME = "PG_REVIEWS";
 
-    // 🔹 ADD REVIEW
     public static void addReview(Context context, String pgName, ReviewModel review) {
 
         if (pgName == null || review == null) return;
@@ -31,7 +30,6 @@ public class ReviewRepository {
                 .apply();
     }
 
-    // 🔹 GET REVIEWS
     public static List<ReviewModel> getReviews(Context context, String pgName) {
 
         SharedPreferences prefs =
@@ -47,7 +45,6 @@ public class ReviewRepository {
             Type type = new TypeToken<List<ReviewModel>>() {}.getType();
             return new Gson().fromJson(json, type);
         } catch (Exception e) {
-            // Corrupted JSON safety
             return new ArrayList<>();
         }
     }

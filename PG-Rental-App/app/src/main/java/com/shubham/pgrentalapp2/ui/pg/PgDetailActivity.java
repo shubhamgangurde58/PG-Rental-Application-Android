@@ -18,7 +18,6 @@ import com.shubham.pgrentalapp2.utils.RatingRepository;
 
 public class PgDetailActivity extends AppCompatActivity {
 
-    // ================= UI =================
     private ImageView imgPg;
     private TextView tvPgName, tvRent, tvType,
             tvAddress, tvPgContact, tvDescription, txtRatingCount;
@@ -26,7 +25,6 @@ public class PgDetailActivity extends AppCompatActivity {
     private Button btnBookPg;
     private ImageButton btnContactOwner, btnRatePg, btnViewReviews, btnViewOnMap;
 
-    // ================= DATA =================
     private PgModel pg;
     private String ownerPhone;
 
@@ -35,7 +33,6 @@ public class PgDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pg_detail);
 
-        // ================= BIND VIEWS =================
         imgPg = findViewById(R.id.imgPg);
         tvPgName = findViewById(R.id.tvPgName);
         tvRent = findViewById(R.id.tvRent);
@@ -52,7 +49,6 @@ public class PgDetailActivity extends AppCompatActivity {
         btnViewReviews = findViewById(R.id.btnViewReviews);
         btnViewOnMap = findViewById(R.id.btnViewOnMap); // ✅ FIX
 
-        // ================= READ pg_id =================
         int pgId = getIntent().getIntExtra("pg_id", -1);
 
         if (pgId == -1) {
@@ -61,7 +57,6 @@ public class PgDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // ================= FETCH PG FROM DB =================
         pg = PgRepository.getPgById(this, pgId);
 
         if (pg == null) {
@@ -70,11 +65,9 @@ public class PgDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // ================= OWNER CONTACT =================
         OwnerDao ownerDao = new OwnerDao(this);
         ownerPhone = ownerDao.getOwnerPhoneByEmail(pg.getOwnerEmail());
 
-        // ================= SET UI =================
         tvPgName.setText(pg.getName());
         tvRent.setText("₹ " + pg.getRent() + " / Month");
         tvType.setText("Type: " + pg.getType());
@@ -82,20 +75,17 @@ public class PgDetailActivity extends AppCompatActivity {
         tvDescription.setText(pg.getDescription());
         tvPgContact.setText("PG Contact: " + pg.getOwnerPhone());
 
-        // ================= IMAGE =================
         if (pg.getImageUri() != null && !pg.getImageUri().isEmpty()) {
             imgPg.setImageURI(Uri.parse(pg.getImageUri()));
         } else {
             imgPg.setImageResource(R.drawable.ic_launcher_background);
         }
 
-        // ================= RATING =================
         float avgRating = RatingRepository.getAverageRating(this, pg.getName());
         int ratingCount = RatingRepository.getRatingCount(this, pg.getName());
         ratingBarOverall.setRating(avgRating);
         txtRatingCount.setText("(" + ratingCount + " reviews)");
 
-        // ================= BOOK PG =================
         btnBookPg.setOnClickListener(v -> {
             Intent bookIntent = new Intent(this, BookPgActivity.class);
             bookIntent.putExtra("pg_name", pg.getName());
@@ -106,24 +96,20 @@ public class PgDetailActivity extends AppCompatActivity {
             startActivity(bookIntent);
         });
 
-        // ================= CONTACT OWNER =================
         btnContactOwner.setOnClickListener(v -> showContactDialog());
 
-        // ================= RATE PG =================
         btnRatePg.setOnClickListener(v -> {
             Intent rateIntent = new Intent(this, RatePgActivity.class);
             rateIntent.putExtra("pg_name", pg.getName());
             startActivity(rateIntent);
         });
 
-        // ================= VIEW REVIEWS =================
         btnViewReviews.setOnClickListener(v -> {
             Intent reviewIntent = new Intent(this, ReviewListActivity.class);
             reviewIntent.putExtra("pg_name", pg.getName());
             startActivity(reviewIntent);
         });
 
-        // ================= 🗺 VIEW PG ON MAP (FIXED) =================
         btnViewOnMap.setOnClickListener(v -> {
             Intent mapIntent = new Intent(this, NearestPgMapActivity.class);
             mapIntent.putExtra("from_pg_detail", true);
@@ -134,7 +120,6 @@ public class PgDetailActivity extends AppCompatActivity {
         });
     }
 
-    // ================= CONTACT DIALOG =================
     private void showContactDialog() {
 
         if (ownerPhone == null || ownerPhone.trim().isEmpty()) {
